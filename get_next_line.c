@@ -10,10 +10,11 @@ char *get_next_line(int fd)
 
 	i = 0;
 	res = NULL;
-	
 	while (1)
 	{
 		n_read = read(fd, &bff[i], 1);
+		if (n_read == -1)
+			return NULL;
 		i += n_read;
 		if (n_read == 0 || bff[i - 1] == '\n')
 		{
@@ -46,7 +47,10 @@ char *get_next_line(int fd)
 		if (!res)
 			return NULL;
 		if (!ft_str_len(res))
+		{
+			free(res);
 			return NULL;
+		}
 		return res;
 	}
 	res_tmp = ft_concat_str(res, bff);	
