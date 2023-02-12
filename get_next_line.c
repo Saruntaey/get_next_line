@@ -1,12 +1,13 @@
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+
+char *get_line_through_bff(int fd, char *bff, int bff_size)
 {
-	char bff[BUFFER_SIZE + 1];
 	int i;
 	int n_read;
 	char *res;
 	char *res_tmp;
+
 
 	i = 0;
 	res = NULL;
@@ -21,7 +22,7 @@ char *get_next_line(int fd)
 			bff[i] = '\0';
 			break;
 		}
-		if (i == BUFFER_SIZE)
+		if (i == bff_size - 1)
 		{
 			bff[i] = '\0';
 			if (!res)
@@ -58,6 +59,19 @@ char *get_next_line(int fd)
 		return NULL;
 	free(res);	
 	return res_tmp;
+}
+
+char *get_next_line(int fd)
+{
+	char *bff;
+	char *line;
+
+	bff = malloc(BUFFER_SIZE + 1);
+	if (!bff)
+		return NULL;
+	line = get_line_through_bff(fd, bff, BUFFER_SIZE + 1);
+	free(bff);
+	return line;	
 }
 
 char *ft_concat_str(char *str1, char *str2)
