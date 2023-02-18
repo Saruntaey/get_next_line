@@ -6,11 +6,11 @@
 /*   By: stapee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:43:54 by stapee            #+#    #+#             */
-/*   Updated: 2023/02/18 17:43:57 by stapee           ###   ########.fr       */
+/*   Updated: 2023/02/18 18:00:05 by stapee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_concat_str(char *str1, char *str2)
 {
